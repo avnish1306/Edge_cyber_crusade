@@ -168,18 +168,15 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: #9053c7;
-  background: -webkit-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -o-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: -moz-linear-gradient(-135deg, #c850c0, #4158d0);
-  background: linear-gradient(-135deg, #c850c0, #4158d0);
+  background: url("https://images.wallpaperscraft.com/image/battlefield_4_game_ea_digital_illusions_ce_93159_1920x1080.jpg");
 }
 
 .wrap-login100 {
   width: 960px;
-  background: #fff;
+  background:rgba(0, 0, 0, 0.2);
   border-radius: 10px;
   overflow: hidden;
+  color: #e6e6e6;
 
   display: -webkit-box;
   display: -webkit-flex;

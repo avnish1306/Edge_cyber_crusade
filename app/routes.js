@@ -44,6 +44,11 @@ module.exports = function(app, passport) {
 
     // show the home page (will also have our login links)
     app.get('/', isLoggedIn2, function(req, res) {
+        res.render('index-square.ejs', { messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
+
+    });
+
+    app.get('/user_login', isLoggedIn2, function(req, res) {
         res.render('index.ejs', { messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
 
     });
