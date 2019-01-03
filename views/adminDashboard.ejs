@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <style>
+        body {
+            padding-top: 80px;
+            word-wrap: break-word;
+        }
+        
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            float: right;
+            margin-left: 400px;
+            background-color: rgb(18, 69, 209);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 4px 9px #999;
+        }
+        
+        .my-float {
+            margin-top: 22px;
+        }
+        
+        .addEvent {
+            align-content: center;
+            margin-top: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+            min-width: 70%;
+            min-height: 30%;
+            background-color: #999;
+            padding-left: 60px;
+            display: none;
+            position: absolute;
+        }
+        
+        .input-group {
+            max-width: 40%;
+            min-width: 450px;
+        }
+        
+        .add-button {
+            width: 90px;
+            max-height: 5%;
+            align-content: center;
+            float: center;
+        }
+        
+        .container {
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="page-header text-center">
+            <h1><span class="fa fa-user-secret"></span> Admin Page</h1>
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        </div>
+        <a href="#" onclick="showLoginBox()" class="float" align="right">
+            <i class="fa fa-plus my-float"></i>
+        </a>
+        <div class="col-sm-6">
+            <div class="well">
+
+                <% for(var i=0;i<events.length;i++) {   %>
+                    <h3 class="text-danger"><span class="fa fa-laptop"></span>
+                        <%= events[i].eventName %>
+                    </h3>
+                    <p>
+
+                        <strong>Event Code</strong>:
+                        <%= events[i].eventCode %><br>
+                            <strong>Price</strong>:
+                            <%= events[i].price %><br>
+                                <strong>Participation Count</strong>:
+                                <%= events[i].participationCount %>
+
+                    </p>
+
+                    <a href="" class="btn btn-success" id="<%= events[i].eventCode %>">Edit</a>
+                    <% } %>
+            </div>
+        </div>
+    </div>
+    <div class="addEvent" id="addEvent">
+        <div class="row main">
+            <div class="panel-heading">
+                <div class="panel-title text-center">
+                    <h1 class="title">Add Event</h1>
+                    <hr />
+                </div>
+            </div>
+            <div class="add-event main-center" align="center">
+                <form class="form-horizontal" method="post" action="#">
+
+                    <div class="form-group ">
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-send fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="eventName" id="eventName" placeholder="Enter Event Name" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                <input type="text" class="form-control" name="eventCode" id="eventCode" placeholder="Enter Event Code" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <div class="cols-sm-10">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="fa fa-rupee fa" aria-hidden="true"></i></span>
+                                <input type="number" class="form-control" name="price" id="price" placeholder="Enter Price" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group ">
+                        <button type="button" class="btn btn-primary btn-lg btn-block add-button">Add</button>
+                    </div>
+                    <div class="cancle">
+                        <a href="/adminDashboard" onclick="showDashboard()">Cancle</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <script>
+        function showLoginBox() {
+            document.getElementById('addEvent').style.display = 'block';
+            document.getElementById('container').style.display = 'none';
+
+        }
+
+        function showDashboard() {
+            document.getElementById('addEvent').style.display = 'none';
+            document.getElementById('container').style.display = 'block';
+
+        }
+    </script>
+
+</body>
+
+</html>
