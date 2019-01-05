@@ -3,6 +3,7 @@ module.exports = function(app, passport) {
     var base64image = require('base64-to-image');
     var Events = require('./models/events');
     var User = require('./models/user');
+    var Tournament = require('./models/tournament');
     var path = './public/';
     const qrcode = require('qrcode');
     const _ = require('lodash');
@@ -173,14 +174,66 @@ module.exports = function(app, passport) {
             if (err) {
                 console.log(" error ");
             } else {
-                res.render('members.ejs', {
-                    user: req.user,
-                    members: user.members
+                Tournament.find({}, (err, tournaments) => {
+                    if (err) {
+                        console.log(" error ");
+                    } else {
+                        res.render('members.ejs', {
+                            user: req.user,
+                            members: user.members,
+                            tournaments: tournaments,
+                            messagel: req.flash('loginMessage'),
+                            messages: req.flash('signupMessage')
 
-                });
+                        });
+                    }
+                })
+
             }
         })
     });
+
+    app.post('/participate', (req, res, next) => {
+        var tournamentId = req.body.tournamentId;
+        var userId = req.body.userId;
+        var userName = req.body.userName;
+        var tournamentName = req.body.tournamentName;
+        var tournamentObj = {
+            'name': tournamentName,
+            'tournamentId': tournamentId,
+            'rank': -1,
+            'status': 'pending'
+        }
+        var userObj = {
+            'userId': userId,
+            'name': userName,
+            'status': 'pending'
+        }
+        Tournament.findOne({ tournamentId: tournamentId }, (err, tournament) => {
+            if (err) throw err;
+
+            tournament.teams = tournament.teams.concat([userObj]);
+            tournament.save((err, newTournament) => {
+                if (err) throw err;
+                User.findOne({ userId: userId }, (err, user) => {
+                    if (err) throw err;
+                    user.tournaments = user.tournaments.concat([tournamentObj]);
+                    user.save((err, newUser) => {
+                        if (err) throw err;
+                        res.status(200).json({
+                            'success': 'true',
+                            'msg': 'participated Successfully'
+                        })
+                    })
+
+                })
+
+            })
+
+        })
+
+    })
+
 
     app.post('/remove-member', (req, res, next) => {
         var userId = req.body.userId;

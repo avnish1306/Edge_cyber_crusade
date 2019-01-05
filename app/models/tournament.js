@@ -15,6 +15,20 @@ var tournamentSchema = mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    teams: [{
+        userId: {
+            type: mongoose.Schema.Types.String,
+            refs: 'User'
+        },
+        name: {
+            type: String
+        },
+        status: {
+            type: String,
+            default: "pending"
+        }
+
+    }],
     rounds: [{
         roundNumber: {
             type: Number
@@ -23,6 +37,9 @@ var tournamentSchema = mongoose.Schema({
             userId: {
                 type: mongoose.Schema.Types.String,
                 refs: 'User'
+            },
+            name: {
+                type: String
             }
         }],
         status: {

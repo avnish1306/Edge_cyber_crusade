@@ -74,6 +74,9 @@ var userSchema = mongoose.Schema({
         default: 0
     },
     tournaments: [{
+        name: {
+            type: String
+        },
         tournamentId: {
             type: mongoose.Schema.Types.String,
             refs: 'Tournament'
@@ -81,6 +84,10 @@ var userSchema = mongoose.Schema({
         rank: {
             type: Number,
             default: -1
+        },
+        status: {
+            type: String,
+            default: "pending"
         }
     }]
 
