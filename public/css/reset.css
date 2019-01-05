@@ -40,37 +40,37 @@ ul {
 
 h1 {
   font-size: 54px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
 h2 {
   font-size: 48px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
 h3 {
   font-size: 42px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
 h4 {
   font-size: 36px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
 h5 {
   font-size: 30px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
 h6 {
   font-size: 24px;
-  color: #181818;
+  color: white;
   font-weight: 600;
 }
 
@@ -166,7 +166,7 @@ a:focus {
 }
 
 .preloader {
-  background: #fff;
+  background: black;
   bottom: 0;
   left: 0;
   position: fixed;
@@ -179,12 +179,12 @@ a:focus {
   background-image: url(../images/loading.gif);
   background-position: center;
   background-repeat: no-repeat;
-  height: 200px;
-  left: 50%;
+  height: 300px;
+  left: 40%;
   margin: -100px 0 0 -100px;
   position: absolute;
   top: 50%;
-  width: 200px;
+  width: 600px;
 }
 
 #scroll-top-area {

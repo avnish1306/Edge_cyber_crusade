@@ -72,6 +72,11 @@
                 body {
                     padding-top: 80px;
                     word-wrap: break-word;
+                    background: #ADA996;  /* fallback for old browsers */
+                    background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+                    background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+
                 }
                 
                 .float {
@@ -87,6 +92,10 @@
                     border-radius: 50px;
                     text-align: center;
                     box-shadow: 2px 4px 9px #999;
+                }
+
+                .card{
+                    background:rgba(0,0,0,.25) !important;
                 }
                 
                 .my-float {
@@ -157,7 +166,7 @@
 
                 <% for(var i=0;i<members.length;i++) {   %>
 
-                    <div class="col-sm-6" style="padding:5%" >
+                    <div class="col-sm-6 text-center" style="padding:5%" >
                             <div class="card" style="width: 18rem;">
                                     <h3 class="text-danger"><span class="fa fa-laptop"></span></h3>
                                     <div class="card-body">

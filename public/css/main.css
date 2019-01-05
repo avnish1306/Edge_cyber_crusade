@@ -158,7 +158,7 @@ iframe {
 
 .container-login100 {
   width: 100%;  
-  min-height: 100vh;
+  min-height: 50%;
   display: -webkit-box;
   display: -webkit-flex;
   display: -moz-box;
@@ -168,7 +168,9 @@ iframe {
   justify-content: center;
   align-items: center;
   padding: 15px;
-  background: url("https://images.wallpaperscraft.com/image/battlefield_4_game_ea_digital_illusions_ce_93159_1920x1080.jpg");
+  background: #ADA996;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 .wrap-login100 {
@@ -198,6 +200,23 @@ iframe {
   max-width: 100%;
 }
 
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
 
 /*------------------------------------------------------------------
 [  ]*/
@@ -208,7 +227,7 @@ iframe {
 .login100-form-title {
   font-family: Poppins-Bold;
   font-size: 24px;
-  color: #333333;
+  color: white;
   line-height: 1.2;
   text-align: center;
 
@@ -230,7 +249,7 @@ iframe {
   font-family: Poppins-Medium;
   font-size: 15px;
   line-height: 1.5;
-  color: #666666;
+  color: white !important;
 
   display: block;
   width: 100%;
@@ -292,7 +311,7 @@ iframe {
   height: 100%;
   padding-left: 35px;
   pointer-events: none;
-  color: #666666;
+  color: white !important;
 
   -webkit-transition: all 0.4s;
   -o-transition: all 0.4s;
@@ -323,7 +342,7 @@ iframe {
   font-family: Montserrat-Bold;
   font-size: 15px;
   line-height: 1.5;
-  color: #fff;
+  color: #fff !important;
   text-transform: uppercase;
 
   width: 100%;
