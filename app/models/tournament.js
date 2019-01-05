@@ -8,7 +8,8 @@ var tournamentSchema = mongoose.Schema({
         type: String
     },
     status: {
-        type: String
+        type: String,
+        default: "running"
     },
     startDate: {
         type: Date,

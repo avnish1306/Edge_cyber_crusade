@@ -3,6 +3,7 @@
 
 
 <!-- Mirrored from tahsinportfolio.com/Avita/index-square.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 02 Jan 2019 16:17:04 GMT -->
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,13 +31,13 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="stylesheet" type="text/css" href="./vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./endor/select2/select2.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="./css/util.css">
-	<link rel="stylesheet" type="text/css" href="./css/main.css">
-	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.css" rel="stylesheet" type="text/css">
-<!--===============================================================================================-->
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./endor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./css/util.css">
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-social/4.12.0/bootstrap-social.css" rel="stylesheet" type="text/css">
+    <!--===============================================================================================-->
 </head>
 
 
@@ -44,58 +45,66 @@
 
     <!-- Start Preloader -->
     <div class="preloader">
-            <div class="preloader-img"></div>
-        </div>
-        <!-- End Preloader -->
-    
-        <!-- Start scroll-top button -->
-        <div id="scroll-top-area">
-            <a href="#"><span>Scroll Top</span><i class="fas fa-arrow-right"></i></a>
-        </div>
-        <!-- End scroll-top button -->
-    
-        <!--Start Header-->
-        <header>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">
-                        <a href="index-2.html" class="logo">
-                            <img src="images/logoWhite.png" data-dark="images/logoWhite.png" alt="logo">
-                        </a>
-                    </div>
-                    <div class="col-md-9">
-                        <nav class="menu single-page-nav" id="menu">
-                            <ul>
-                                <li><a class="home" href="#welcome-area">Home</a></li>
-                                <li><a href="#about">About us</a></li>
-                                <li><a href="#service">Tournaments</a></li>
-                                <li><a href="#portfolio">Gallery</a></li>
-                                <li><a href="#client-testimonial">Hall of Fame</a></li>
-                                <li><a href="#blog">Blog</a></li>
-                                <li><a href="#contact">Contact</a></li>
+        <div class="preloader-img"></div>
+    </div>
+    <!-- End Preloader -->
+
+    <!-- Start scroll-top button -->
+    <div id="scroll-top-area">
+        <a href="#"><span>Scroll Top</span><i class="fas fa-arrow-right"></i></a>
+    </div>
+    <!-- End scroll-top button -->
+
+    <!--Start Header-->
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="index-2.html" class="logo">
+                        <img src="images/logoWhite.png" data-dark="images/logoWhite.png" alt="logo">
+                    </a>
+                </div>
+                <div class="col-md-9">
+                    <nav class="menu single-page-nav" id="menu">
+                        <ul>
+                            <li><a class="home" href="#welcome-area">Home</a></li>
+                            <li><a href="#about">About us</a></li>
+                            <li><a href="#service">Tournaments</a></li>
+                            <li><a href="#portfolio">Gallery</a></li>
+                            <li><a href="#client-testimonial">Hall of Fame</a></li>
+                            <li><a href="#blog">Blog</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                            <% if(user=="null"){%>
                                 <li><a href="#" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a></li>
-                            </ul>
-                        </nav>
-                    </div>
+                                <% } else { %>
+                                    <li><a href="/profile">Profile</a></li>
+                                    <li><a href="/logout">Logout</a></li>
+                                    <% } %>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </header>
-        <!--End Header-->
+        </div>
+    </header>
+    <!--End Header-->
 
 
-        <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-lg">
-                  <div class="modal-content">
-                      <div class="limiter">                     
-                        <div class="container-login100">
-                                <div class="wrap-login100">
-                                        <div class="container" style="padding: 6%;color: white"><center><h1>Cyber Crusade Login</h1></center>
-                                </div>
-                                    <!-- <div class="login100-pic js-tilt" data-tilt>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="limiter">
+                    <div class="container-login100">
+                        <div class="wrap-login100">
+                            <div class="container" style="padding: 6%;color: white">
+                                <center>
+                                    <h1>Cyber Crusade Login</h1>
+                                </center>
+                            </div>
+                            <!-- <div class="login100-pic js-tilt" data-tilt>
                                         <img src="images/img-01.png" alt="IMG">
                                     </div> -->
-                    
-                                    <!-- <form class="login100-form validate-form" action="/login" method="post">
+
+                            <!-- <form class="login100-form validate-form" action="/login" method="post">
                                         <span class="login100-form-title">
                                             User Login
                                         </span>
@@ -105,7 +114,7 @@
                                         <% if (messages.length > 0) { %>
                                             <div class="alert alert-danger"><%= messages %></div>
                                         <% } %> -->
-                                        <!-- <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+                            <!-- <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
                                             <input class="input100" type="text" name="email" placeholder="Email">
                                             <span class="focus-input100"></span>
                                             <span class="symbol-input100">
@@ -120,35 +129,35 @@
                                                 <i class="fa fa-lock" aria-hidden="true"></i>
                                             </span>
                                         </div> -->
-                                        
-                                        <!-- <div class="container-login100-form-btn">
+
+                            <!-- <div class="container-login100-form-btn">
                                                 <button type="submit" class="login100-form-btn"> Login</button>
                                             
                                         </div> -->
-                                        <div class="container text-center" style="padding-top:20px;">
-                                                <!-- <h7 style="text-align:center;">New User? <a href="/signup" data-toggle="modal" data-target="#myModal">Sign up</a></h7> -->
-                                                <h4 style="padding-bottom: 5%">Login Through</h4>
-                                                <div class="row ">
-                                                        <div class="col-sm-6 container-login100-form-btn">
-                                                        <a class="btn btn-social btn-facebook" href="/auth/facebook">
-                                                            <span class="fa fa-facebook"></span>Facebook
-                                                            </a>
-                                                        </div>
-                                                                
-                                                        <div class="col-sm-6 container-login100-form-btn">
-                                                            <a class="btn btn-social btn-google" href="/auth/google">
-                                                                <span class="fa fa-google"></span>google
-                                                                </a>
-                                                            </div>
-                                                        </div>					
-                                    
-                                            </div>
-                    
-                                       
-                                    <!-- </form> -->
+                            <div class="container text-center" style="padding-top:20px;">
+                                <!-- <h7 style="text-align:center;">New User? <a href="/signup" data-toggle="modal" data-target="#myModal">Sign up</a></h7> -->
+                                <h4 style="padding-bottom: 5%">Login Through</h4>
+                                <div class="row ">
+                                    <div class="col-sm-6 container-login100-form-btn">
+                                        <a class="btn btn-social btn-facebook" href="/auth/facebook">
+                                            <span class="fa fa-facebook"></span>Facebook
+                                        </a>
+                                    </div>
+
+                                    <div class="col-sm-6 container-login100-form-btn">
+                                        <a class="btn btn-social btn-google" href="/auth/google">
+                                            <span class="fa fa-google"></span>google
+                                        </a>
+                                    </div>
                                 </div>
+
                             </div>
-                  </div>
+
+
+                            <!-- </form> -->
+                        </div>
+                    </div>
                 </div>
-                </div>
-              </div>
+            </div>
+        </div>
+    </div>

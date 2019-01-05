@@ -43,12 +43,13 @@ module.exports = function(app, passport) {
     // normal routes ===============================================================
 
     // show the home page (will also have our login links)
-    app.get('/',function(req, res) {
-        res.render('index-square.ejs', { messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
+    /*app.get('/', isLoggedIn2, function(req, res) {
+        console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" + req.user);
+        res.render('index-square.ejs', { user: 'null', messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
 
-    });
+    });*/
 
-    app.get('/user_login', isLoggedIn2, function(req, res) {
+    app.get('/user_login', isLoggedIn, function(req, res) {
         res.render('index.ejs', { messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
 
     });
@@ -58,8 +59,17 @@ module.exports = function(app, passport) {
         res.render("user_form.ejs");
     })
 
+    app.get("/profile", isLoggedIn, function(req, res) {
+        res.render("profile.ejs", {
+            user: req.user
+
+
+        });
+    })
+
+
     // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
+    app.get('/', isLoggedIn, function(req, res) {
         var hero = req.user.isHero;
         if (hero == true) {
             res.redirect('/adminDashboard');
@@ -106,8 +116,10 @@ module.exports = function(app, passport) {
                                     user: req.user
                                 });
                             } else {
-                                res.render('profile.ejs', {
-                                    user: req.user
+                                res.render('index-square.ejs', {
+                                    user: req.user,
+                                    messagel: req.flash('loginMessage'),
+                                    messages: req.flash('signupMessage')
                                 });
                             }
                         })
@@ -121,10 +133,12 @@ module.exports = function(app, passport) {
                         if (err) throw err;
                         if (user && user.location == "NULL") {
                             res.render('user_form.ejs', {
-                                user: req.user
+                                user: req.user,
+                                messagel: req.flash('loginMessage'),
+                                messages: req.flash('signupMessage')
                             });
                         } else {
-                            res.render('profile.ejs', {
+                            res.render('index-square.ejs', {
                                 user: req.user
                             });
                         }
@@ -138,8 +152,10 @@ module.exports = function(app, passport) {
                             user: req.user
                         });
                     } else {
-                        res.render('profile.ejs', {
-                            user: req.user
+                        res.render('index-square.ejs', {
+                            user: req.user,
+                            messagel: req.flash('loginMessage'),
+                            messages: req.flash('signupMessage')
                         });
                     }
                 })
@@ -333,8 +349,8 @@ module.exports = function(app, passport) {
     // });
 
     // process the login form
-    app.get('/login', isLoggedIn1, (req, res) => {
-        res.redirect('/profile');
+    app.get('/login', (req, res) => {
+        res.render('index-square.ejs', { user: 'null', messagel: req.flash('loginMessage'), messages: req.flash('signupMessage') });
     });
 
     // SIGNUP =================================

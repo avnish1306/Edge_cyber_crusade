@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Members</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <style>
+        body {
+            padding-top: 80px;
+            word-wrap: break-word;
+        }
+        
+        .float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            float: right;
+            margin-left: 400px;
+            background-color: rgb(18, 69, 209);
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            box-shadow: 2px 4px 9px #999;
+        }
+        
+        .my-float {
+            margin-top: 22px;
+        }
+        
+        .addEvent {
+            align-content: center;
+            margin-top: 5%;
+            margin-left: 10%;
+            margin-right: 10%;
+            min-width: 70%;
+            min-height: 30%;
+            background-color: #999;
+            padding-left: 60px;
+            display: none;
+            position: absolute;
+        }
+        
+        .input-group {
+            max-width: 40%;
+            min-width: 450px;
+        }
+        
+        .add-button {
+            width: 90px;
+            max-height: 5%;
+            align-content: center;
+            float: center;
+        }
+        
+        .container {
+            display: block;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="container">
+        <div class="page-header text-center">
+            <h1><span class="fa fa-user-secret"></span> Members</h1>
+            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        </div>
+        <a href="#" onclick="showLoginBox()" class="float" align="right">
+            <i class="fa fa-plus my-float"></i>
+        </a>
+        <div class="col-sm-6">
+            <div class="well">
+
+                <% for(var i=0;i<members.length;i++) {   %>
+                    <h3 class="text-danger"><span class="fa fa-laptop"></span>
+                        <%= members[i].name %>
+                    </h3>
+                    <p>
+
+                        <strong>Stream Id</strong>:
+                        <%= members[i].streamId %><br>
+                            <strong>Location</strong>:
+                            <%= members[i].location %><br>
+                                <strong>Email Id</strong>:
+                                <%= members[i].email %><br>
+                                    <strong>Mobile Number</strong>:
+                                    <%= members[i].mobileNumber %>
+
+                    </p>
+
+                    <a href="" class="btn btn-secondary" id="<%= members[i].email %>">Edit</a>
+                    <a href="javascript:;" class="btn btn-danger" id="<%= members[i].email %>" onclick="remove_member('<%= members[i].email %>')">Remove</a>
+
+                    <% } %>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function add() {
+            alert("hey");
+        }
+
+        function remove_member(memberEmail) {
+            //alert("clicked" + memberEmail);
+
+            var url = "http://localhost:8080/remove-member";
+            var userId = document.getElementById("userId").textContent;
+
+            var memberObj = {
+                'userId': userId,
+                'memberEmail': memberEmail
+            }
+            $.post(url, memberObj, function(result) {
+                if (result) {
+                    if (result.success == "true") {
+                        window.location.href = "/members";
+                    } else {
+                        alert(result.msg);
+                    }
+                } else {
+                    alert("Error in Editing");
+                }
+            })
+        }
+
+        function showDashboard() {
+            document.getElementById('addEvent').style.display = 'none';
+            document.getElementById('container').style.display = 'block';
+
+        }
+
+        function showLoginBox() {
+            document.getElementById('addEvent').style.display = 'block';
+            document.getElementById('container').style.display = 'none';
+
+        }
+
+
+        function addMember() {
+            var url = "http://localhost:8080/add-member";
+            var userId = document.getElementById("userId").textContent;
+            var memberObj = {
+                'userId': userId,
+                'obj': {
+                    'name': $("#name").val(),
+                    'streamId': $("#streamId").val(),
+                    'location': $("#location").val(),
+                    'email': $("#email").val(),
+                    'mobileNumber': $("#mobileNumber").val()
+                }
+
+
+            }
+            $.post(url, memberObj, function(result) {
+                if (result) {
+                    if (result.success == "true") {
+                        window.location.href = "/members";
+                    } else {
+                        alert(result.msg);
+                    }
+                } else {
+                    alert("Error in saving");
+                }
+            })
+
+        }
+    </script>
+
+</body>
+
+</html>
