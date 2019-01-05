@@ -405,8 +405,8 @@ module.exports = function(app, passport) {
     // the callback after google has authenticated the user
     app.get('/auth/google/callback',
         passport.authenticate('google', {
-            successRedirect: '/profile',
-            failureRedirect: '/'
+            successRedirect: '/',
+            failureRedirect: '/login'
         }));
 
     // =============================================================================
@@ -456,8 +456,8 @@ module.exports = function(app, passport) {
     // the callback after google has authorized the user
     app.get('/connect/google/callback',
         passport.authorize('google', {
-            successRedirect: '/profile',
-            failureRedirect: '/'
+            successRedirect: '/',
+            failureRedirect: '/login'
         }));
 
     // =============================================================================
@@ -535,7 +535,7 @@ function isLoggedIn(req, res, next) {
 function isLoggedIn2(req, res, next) {
     if (req.user) {
         //console.log(" islogged in " + req.user);
-        res.redirect('/profile');
+        res.redirect('/');
 
     } else {
         //console.log(" islogged in else " + req.user);
