@@ -7,6 +7,14 @@ var tournamentSchema = mongoose.Schema({
     tournamentId: {
         type: String
     },
+    memberLen: {
+        type: Number,
+        default: 1
+    },
+    link: {
+        type: String,
+        default: ""
+    },
     status: {
         type: String,
         default: "running"
@@ -40,6 +48,10 @@ var tournamentSchema = mongoose.Schema({
             },
             name: {
                 type: String
+            },
+            score: {
+                type: Number,
+                default: 0
             }
         }],
         status: {
