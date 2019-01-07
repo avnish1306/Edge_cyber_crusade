@@ -159,16 +159,34 @@
         color: blue;
         font-family: Arial, Helvetica, sans-serif;
     }
+    
+    footer {
+        margin-top: 500px;
+    }
 </style>
 
 <% include partials/header2 %>
 
     <div class="container" id="container">
         <div class="text-center">
-
             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg2">Tournaments</a>
+        </div>
+        <div class="jumbotron text-center ">
+            <h3>User Detail</h3>
+            <strong>Name</strong>:
+            <%= user.name %><br>
+                <strong>Email</strong>:
+                <%= user.google.email %><br>
+                    <strong>Team Name</strong>:
+                    <%= user.displayName %><br>
+                        <strong>Location</strong>:
+                        <%= user.location %>
+        </div>
+        <div class="text-center">
             <h1><span class="fa fa-user-circle"></span> Members</h1>
         </div>
+
+
         <a href="#" class="float" align="right" data-toggle="modal" data-target=".bd-example-modal-lg1">
             <i class="fa fa-plus my-float"></i>
         </a>
@@ -179,7 +197,7 @@
 
                     <div class="col-sm-6 text-center" style="padding:5%">
                         <div class="card" style="width: 18rem;">
-                            <h3 class="text-danger"><span class="fa fa-laptop"></span></h3>
+                            <h3 class="text-danger"><span class="fa fa-user-friends"></span></h3>
                             <div class="card-body">
                                 <h5 class="card-title">
                                     <%= members[i].name %>
@@ -399,8 +417,8 @@
 
 
 
-
     <% include partials/footer %>
+
         <script>
             function add() {
                 alert("hey");
@@ -508,6 +526,7 @@
 
             }
         </script>
+
 
         <!-- </body>
 

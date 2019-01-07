@@ -9,7 +9,9 @@ module.exports = function(app, passport) {
     const _ = require('lodash');
     var Promise = require('promise');
 
-
+    function pageNotFound(res) {
+        res.render('404.ejs');
+    }
     async function run(code) {
         var k = code.toString();
         const res = await qrcode.toDataURL(k);
@@ -24,9 +26,11 @@ module.exports = function(app, passport) {
         }
     }
 
+
+
     function checkForUpdate(userId) {
         User.findOne({ userId: userId }, (err, user) => {
-            if (err) throw err;
+            if (err) pageNotFound(res);
             if (user && user.gender == "NONE") {
                 return true;
             } else {
@@ -60,13 +64,13 @@ module.exports = function(app, passport) {
         res.render("user_form.ejs");
     })
 
-    app.get("/profile", isLoggedIn, function(req, res) {
+    /*app.get("/profile", isLoggedIn, function(req, res) {
         res.render("profile.ejs", {
             user: req.user
 
 
         });
-    })
+    })*/
 
 
     // PROFILE SECTION =========================
@@ -111,7 +115,7 @@ module.exports = function(app, passport) {
                             run(id).catch(e => { console.log("error in qrcode function") })
                         })
                         User.findOne({ userId: id }, (err, user) => {
-                            if (err) throw err;
+                            if (err) pageNotFound(res);
                             if (user && user.location == "NULL") {
                                 res.render('user_form.ejs', {
                                     user: req.user
@@ -131,7 +135,7 @@ module.exports = function(app, passport) {
                     })
                 } else {
                     User.findOne({ userId: id }, (err, user) => {
-                        if (err) throw err;
+                        if (err) pageNotFound(res);
                         if (user && user.location == "NULL") {
                             res.render('user_form.ejs', {
                                 user: req.user,
@@ -147,7 +151,7 @@ module.exports = function(app, passport) {
                 }
             } else {
                 User.findOne({ userId: id }, (err, user) => {
-                    if (err) throw err;
+                    if (err) pageNotFound(res);
                     if (user && user.location == "NULL") {
                         res.render('user_form.ejs', {
                             user: req.user
@@ -210,16 +214,16 @@ module.exports = function(app, passport) {
             'status': 'pending'
         }
         Tournament.findOne({ tournamentId: tournamentId }, (err, tournament) => {
-            if (err) throw err;
+            if (err) pageNotFound(res);
 
             tournament.teams = tournament.teams.concat([userObj]);
             tournament.save((err, newTournament) => {
-                if (err) throw err;
+                if (err) pageNotFound(res);
                 User.findOne({ userId: userId }, (err, user) => {
-                    if (err) throw err;
+                    if (err) pageNotFound(res);
                     user.tournaments = user.tournaments.concat([tournamentObj]);
                     user.save((err, newUser) => {
-                        if (err) throw err;
+                        if (err) pageNotFound(res);
                         res.status(200).json({
                             'success': 'true',
                             'msg': 'participated Successfully'
@@ -239,14 +243,14 @@ module.exports = function(app, passport) {
         var userId = req.body.userId;
         var memberEmail = req.body.memberEmail;
         User.findOne({ userId: userId }, (err, user) => {
-            if (err) throw err;
+            if (err) pageNotFound(res);
             if (user && user.members != null) {
                 var filteredMembers = user.members.filter(member => {
                     return member.email != memberEmail;
                 })
                 user.members = filteredMembers;
                 user.save((err, newUser) => {
-                    if (err) throw err;
+                    if (err) pageNotFound(res);
                     res.status(200).json({
                         'success': 'true',
                         'msg': 'member deleted',
@@ -266,7 +270,7 @@ module.exports = function(app, passport) {
     app.post('/add-member', (req, res, next) => {
         var userId = req.body.userId;
         User.findOne({ userId: userId }, (err, user) => {
-            if (err) throw error;
+            if (err) pageNotFound(res);
             if (user && user.members.length >= 5) {
                 res.status(200).json({
                     'success': 'false',
@@ -283,7 +287,7 @@ module.exports = function(app, passport) {
                     user.members = user.members.concat([req.body.obj]);
                     console.log("user " + user);
                     user.save((err, newUser) => {
-                        if (err) throw err;
+                        if (err) pageNotFound(res);
                         res.status(200).json({
                             'success': 'true',
                             'msg': 'member added',
@@ -316,10 +320,12 @@ module.exports = function(app, passport) {
 
     })
 
+
+
     app.post('/update-user', (req, res, next) => {
         var userId = req.body.userId;
         User.findOne({ userId: userId }, (err, user) => {
-            if (err) throw error;
+            if (err) pageNotFound(res);
             if (user && user.location != "NULL") {
                 res.status(200).json({
                     'success': 'false',
@@ -331,7 +337,7 @@ module.exports = function(app, passport) {
                 user.displayName = req.body.displayName;
                 console.log("user " + user);
                 user.save((err, newUser) => {
-                    if (err) throw err;
+                    if (err) pageNotFound(res);
                     console.log(" new user " + newUser);
                     res.status(200).json({
                         'success': 'true',
@@ -557,6 +563,10 @@ module.exports = function(app, passport) {
             res.redirect('/profile');
         });
     });
+    app.use(function(req, res, next) {
+        return res.status(404).render();
+    });
+
 
 
 };
