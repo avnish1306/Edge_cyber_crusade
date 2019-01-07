@@ -214,12 +214,14 @@
 
             // remove the box if there is no next question
             var userData = {
-                'userId': userId,
-                'name': questions[0].value,
-                'displayName': questions[1].value,
-                'location': questions[2].value
-            }
-            var url = "http://localhost:8080/update-user"
+                    'userId': userId,
+                    'name': questions[0].value,
+                    'displayName': questions[1].value,
+                    'location': questions[2].value
+                }
+                //var url = "http://localhost:8080/update-user"
+            var url = "<%= process.env.request_url %>";
+            url = url + "/update-user";
             register.className = 'close'
 
             // add the h1 at the end with the welcome text

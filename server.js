@@ -15,6 +15,9 @@ var session = require('express-session');
 var configDB = require('./config/database.js');
 var QRCode = require('qrcode')
 const _ = require('lodash');
+const dotenv = require('dotenv')
+dotenv.config();
+console.log(" env " + process.env.request_url);
 
 var fs = require('fs');
 var https = require('https');

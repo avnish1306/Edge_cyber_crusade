@@ -332,6 +332,7 @@ module.exports = function(app, passport) {
                 console.log("user " + user);
                 user.save((err, newUser) => {
                     if (err) throw err;
+                    console.log(" new user " + newUser);
                     res.status(200).json({
                         'success': 'true',
                         'msg': 'user updated',

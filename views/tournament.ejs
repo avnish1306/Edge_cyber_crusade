@@ -112,7 +112,9 @@
         function remove_member(memberEmail) {
             //alert("clicked" + memberEmail);
 
-            var url = "http://localhost:8080/remove-member";
+            //var url = "http://localhost:8080/remove-member";
+            var url = "<%= process.env.request_url %>";
+            url = url + "/remove-member";
             var userId = document.getElementById("userId").textContent;
 
             var memberObj = {
@@ -146,7 +148,9 @@
 
 
         function addMember() {
-            var url = "http://localhost:8080/add-member";
+            //var url = "http://localhost:8080/add-member";
+            var url = "<%= process.env.request_url %>";
+            url = url + "/add-member";
             var userId = document.getElementById("userId").textContent;
             var memberObj = {
                 'userId': userId,
