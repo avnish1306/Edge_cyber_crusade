@@ -15,7 +15,7 @@ module.exports = function(app, passport) {
     async function run(code) {
         var k = code.toString();
         const res = await qrcode.toDataURL(k);
-        ////console.log(" result " + res);
+        //console.log(" result " + res);
         var qrObj = { 'fileName': code, 'type': 'png' };
         var imageInfo = base64image(res, path, qrObj);
         //console.log("image info " + imageInfo);
@@ -112,6 +112,7 @@ module.exports = function(app, passport) {
                         Qr.save((err, Qr) => {
                             if (err)
                                 console.log(" error in saving " + err);
+                            pageNotFound(res);
                             run(id).catch(e => { console.log("error in qrcode function") })
                         })
                         User.findOne({ userId: id }, (err, user) => {
@@ -177,10 +178,12 @@ module.exports = function(app, passport) {
         User.findOne({ userId: req.user.userId }, (err, user) => {
             if (err) {
                 console.log(" error ");
+                pageNotFound(res);
             } else {
                 Tournament.find({}, (err, tournaments) => {
                     if (err) {
                         console.log(" error ");
+                        pageNotFound(res);
                     } else {
                         res.render('members.ejs', {
                             user: req.user,
@@ -285,7 +288,7 @@ module.exports = function(app, passport) {
                 })
                 if (flag == 0) {
                     user.members = user.members.concat([req.body.obj]);
-                    console.log("user " + user);
+                    //console.log("user " + user);
                     user.save((err, newUser) => {
                         if (err) pageNotFound(res);
                         res.status(200).json({
@@ -335,10 +338,10 @@ module.exports = function(app, passport) {
                 user.name = req.body.name; // nedd to be correced when implement facebook login
                 user.location = req.body.location;
                 user.displayName = req.body.displayName;
-                console.log("user " + user);
+                //console.log("user " + user);
                 user.save((err, newUser) => {
                     if (err) pageNotFound(res);
-                    console.log(" new user " + newUser);
+                    //console.log(" new user " + newUser);
                     res.status(200).json({
                         'success': 'true',
                         'msg': 'user updated',
