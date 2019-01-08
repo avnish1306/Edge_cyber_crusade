@@ -93,6 +93,7 @@
         border-radius: 50px;
         text-align: center;
         box-shadow: 2px 4px 9px #999;
+        z-index: 10000;
     }
     
     .card {
@@ -255,7 +256,7 @@
     <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
     <div class="modal fade bd-example-modal-lg2 " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg tournaments">
-            <div class="modal-content">
+            <div class="modal-content" style="padding: 10px">
 
                 <% if(tournaments.length>0){ for(var i=0;i<tournaments.length;i++) {  %>
                     <h3 class="text-danger"><span class="fa fa-laptop"></span>
