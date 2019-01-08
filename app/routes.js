@@ -567,7 +567,7 @@ module.exports = function(app, passport) {
         });
     });
     app.use(function(req, res, next) {
-        return res.status(404).render();
+        return res.status(404).render('404.ejs');
     });
 
 
