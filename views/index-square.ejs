@@ -23,16 +23,19 @@
                                         <span id="typed"></span>
                                     </div>
                                     <p>
-                                        Cyber Crusade is the official gaming club of techno main salt lake under Geekonix
+                                        Cyber Crusade is the official gaming club of Techno Main Salt Lake under Geekonix
                                     </p>
                                     <div class="social-icons">
                                         <a href="#"><i class="fab fa-facebook-f"></i></a>
-                                        <a href="#"><i class="fab fa-twitter"></i></a>
                                         <a href="#"><i class="fab fa-google"></i></a>
-                                        <a href="#"><i class="fab fa-skype"></i></a>
-                                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
                                     </div>
-                                    <a href="javascript:;" onclick="profile()" class="btn-style3 hire-btn">Register Now</a>
+                                    <% if(user!='null'){ %>
+                                        <a href="javascript:;" onclick="profile()" class="btn-style3 hire-btn">Register Now</a>
+                                        <% } else{%>
+                                            <a href="#" class="btn-style3 hire-btn" data-toggle="modal" data-target=".bd-example-modal-lg">Login</a>
+                                            <% } %>
+
                                 </div>
                             </div>
                         </div>
@@ -40,6 +43,9 @@
                 </div>
             </div>
         </div>
+
+
+
     </section>
     <!--End Welcome Section-->
 
