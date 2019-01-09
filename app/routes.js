@@ -72,6 +72,36 @@ module.exports = function(app, passport) {
         });
     })*/
 
+    app.get('/adminDashboard', isHero, (req, res) => {
+        var user = req.user;
+        Tournament.find({}, (err, tournaments) => {
+            if (err) pageNotFound(res);
+            res.render("adminDashboard.ejs", {
+                user: req.user,
+                tournaments: tournaments,
+                messagel: req.flash('loginMessage'),
+                messages: req.flash('signupMessage')
+            })
+        })
+    })
+
+    app.post('/add-tournament', (req, res, next) => {
+        var tournamentObj = new Tournament({
+            'name': req.body.obj.name,
+            'tournamentId': req.body.obj.tournamentId,
+            'memberLen': parseInt(req.body.obj.memberLen),
+            'author': req.body.author,
+            'link': req.body.obj.link
+        })
+        tournamentObj.save((err, tournament) => {
+            if (err) pageNotFound(res);
+            res.status(200).json({
+                'success': 'true',
+                'userId': req.body.userId
+            })
+        })
+    })
+
 
     // PROFILE SECTION =========================
     app.get('/', isLoggedIn, function(req, res) {
@@ -567,7 +597,7 @@ module.exports = function(app, passport) {
         });
     });
     app.use(function(req, res, next) {
-        return res.status(404).render();
+        return res.status(404).render("404.ejs");
     });
 
 
@@ -584,6 +614,20 @@ function isLoggedIn1(req, res, next) {
     }
 }
 // route middleware to ensure user is logged in
+
+function isHero(req, res, next) {
+    //console.log(req.user);
+    if (req.user != null) {
+        if (req.user.isHero == true) {
+            next();
+        } else {
+            res.redirect('/');
+        }
+    } else {
+        res.redirect('/');
+    }
+}
+
 function isLoggedIn(req, res, next) {
     if (req.user) {
         /*if (res.user.isHero == true) {

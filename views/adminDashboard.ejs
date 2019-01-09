@@ -1,11 +1,13 @@
-<!doctype html>
+<!-- <!doctype html>
 <html>
 
 <head>
-    <title>Node Authentication</title>
+    <title>Members</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 
     <style>
         body {
@@ -64,105 +66,382 @@
     </style>
 </head>
 
-<body>
+<body> -->
+
+<style>
+    body {
+        padding-top: 80px;
+        word-wrap: break-word;
+        background: #ADA996;
+        /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+        /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    
+    .float {
+        position: fixed;
+        width: 60px;
+        height: 60px;
+        bottom: 40px;
+        right: 40px;
+        float: right;
+        margin-left: 400px;
+        background-color: rgb(18, 69, 209);
+        color: #FFF;
+        border-radius: 50px;
+        text-align: center;
+        box-shadow: 2px 4px 9px #999;
+        z-index: 10000;
+    }
+    
+    .card {
+        background: rgba(0, 0, 0, .25) !important;
+    }
+    
+    .my-float {
+        margin-top: 22px;
+    }
+    
+    .addEvent {
+        align-content: center;
+        background-color: white;
+        padding-left: 60px;
+    }
+    
+    .input-group {
+        max-width: 40%;
+        min-width: 450px;
+    }
+    
+    .add-button {
+        width: 90px;
+        max-height: 5%;
+        align-content: center;
+        float: center;
+    }
+    
+    header {
+        background: rgba(0, 0, 0, 0.39) !important;
+    }
+    
+    #container {
+        display: block;
+        padding: 7%;
+        height: 100%;
+    }
+    
+    .modal {
+        text-align: center;
+        padding: 0!important;
+    }
+    
+    .modal:before {
+        content: '';
+        display: inline-block;
+        height: 100%;
+        vertical-align: middle;
+        margin-right: -4px;
+    }
+    
+    .modal-dialog {
+        display: inline-block;
+        text-align: left;
+        vertical-align: middle;
+    }
+    
+    .tournaments {
+        min-width: 500px;
+        min-height: 400px;
+    }
+    
+    #formLink {
+        color: blue;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    footer {
+        margin-top: 500px;
+    }
+</style>
+
+<% include partials/header2 %>
+
     <div class="container" id="container">
-        <div class="page-header text-center">
-            <h1><span class="fa fa-user-secret"></span> Admin Page</h1>
-            <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+
+        <div class="jumbotron text-center ">
+            <h3 style="color:rgb(7, 52, 96)">Admin Detail</h3>
+            <strong>Name</strong>:
+            <%= user.google.name %><br>
+                <strong>Email</strong>:
+                <%= user.google.email %>
         </div>
-        <a href="#" onclick="showLoginBox()" class="float" align="right">
+        <div class="text-center">
+            <h1 style="color:rgb(57, 59, 61)"><span class="fa fa-user-circle"></span> Tournaments</h1>
+        </div>
+
+
+        <a href="#" class="float" align="right" data-toggle="modal" data-target=".bd-example-modal-lg1">
             <i class="fa fa-plus my-float"></i>
         </a>
-        <div class="col-sm-6">
-            <div class="well">
+        <div class="col-sm-12">
+            <div class="row">
 
-                <% for(var i=0;i<events.length;i++) {   %>
-                    <h3 class="text-danger"><span class="fa fa-laptop"></span>
-                        <%= events[i].eventName %>
-                    </h3>
-                    <p>
+                <% for(var i=0;i<tournaments.length;i++) {   %>
 
-                        <strong>Event Code</strong>:
-                        <%= events[i].eventCode %><br>
-                            <strong>Price</strong>:
-                            <%= events[i].price %><br>
-                                <strong>Participation Count</strong>:
-                                <%= events[i].participationCount %>
+                    <div class="col-sm-6 text-center" style="padding:5%">
+                        <div class="card" style="width: 18rem;">
+                            <h3 class="text-danger"><span class="fa fa-laptop"></span></h3>
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <%= tournaments[i].name %>
+                                </h5>
+                                <p class="card-text"><strong>Tournament Id</strong>:
+                                    <%= tournaments[i].tournamentId %><br>
+                                        <strong>Link</strong>:<br>
+                                        <%= tournaments[i].link  %><br>
+                                            <strong>Status</strong>:
+                                            <%= tournaments[i].status  %><br>
+                                                <strong>Member Length</strong>:
+                                                <%= tournaments[i].memberLen  %>
+                                </p>
+                            </div>
+                        </div>
 
-                    </p>
+                    </div>
 
-                    <a href="" class="btn btn-success" id="<%= events[i].eventCode %>">Edit</a>
+
+
+
+
+
+
+
+
                     <% } %>
+
             </div>
         </div>
     </div>
-    <div class="addEvent" id="addEvent">
-        <div class="row main">
-            <div class="panel-heading">
-                <div class="panel-title text-center">
-                    <h1 class="title">Add Event</h1>
-                    <hr />
+
+
+
+
+
+
+    <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="container addEvent" id="addEvent" style="padding:5%">
+                    <div class="row main">
+
+                        <div class="col-sm-12">
+
+                            <div class="panel-heading">
+                                <div class="panel-title text-center">
+                                    <h1 class="title" style="color : rgb(41, 38, 38);">Add a new Tournement</h1>
+                                    <hr />
+                                </div>
+                            </div>
+                            <label id="userId" hidden><%= user.userId %></label>
+                            <div class="add-event main-center" align="center">
+                                <form class="form-horizontal" method="post" action="#">
+
+                                    <div class="form-group ">
+
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-send fa" aria-hidden="true"></i></span>
+                                                <input type="text" class="form-control" name="name" id="name" placeholder=" Tournement Name" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                                <input type="text" class="form-control" name="streamId" id="streamId" placeholder="Tournament Id" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                                <input type="text" class="form-control" name="location" id="location" placeholder="Link" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+
+                                        <div class="cols-sm-10">
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><i class="fa fa-rupee fa" aria-hidden="true"></i></span>
+                                                <input type="number" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Member Length" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group ">
+                                        <button type="button" class="btn btn-primary btn-lg btn-block add-button" onclick="addMember()">Add</button>
+                                    </div>
+
+                                </form>
+                            </div>
+
+
+
+
+
+
+                        </div>
+
+
+
+                    </div>
+
                 </div>
             </div>
-            <div class="add-event main-center" align="center">
-                <form class="form-horizontal" method="post" action="#">
-
-                    <div class="form-group ">
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-send fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="eventName" id="eventName" placeholder="Enter Event Name" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
-                                <input type="text" class="form-control" name="eventCode" id="eventCode" placeholder="Enter Event Code" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-
-                        <div class="cols-sm-10">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-rupee fa" aria-hidden="true"></i></span>
-                                <input type="number" class="form-control" name="price" id="price" placeholder="Enter Price" />
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="form-group ">
-                        <button type="button" class="btn btn-primary btn-lg btn-block add-button">Add</button>
-                    </div>
-                    <div class="cancle">
-                        <a href="/adminDashboard" onclick="showDashboard()">Cancle</a>
-                    </div>
-                </form>
-            </div>
         </div>
-
     </div>
-    <script>
-        function showLoginBox() {
-            document.getElementById('addEvent').style.display = 'block';
-            document.getElementById('container').style.display = 'none';
 
-        }
 
-        function showDashboard() {
-            document.getElementById('addEvent').style.display = 'none';
-            document.getElementById('container').style.display = 'block';
 
-        }
-    </script>
 
-</body>
 
-</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <% include partials/footer %>
+
+        <script>
+            function add() {
+                alert("hey");
+            }
+
+            function remove_member(memberEmail) {
+                //alert("clicked" + memberEmail);
+
+                //var url = "http://localhost:8080/remove-member";
+                var url = "<%= process.env.request_url %>";
+                url = url + "/remove-member";
+                var userId = document.getElementById("userId").textContent;
+
+                var memberObj = {
+                    'userId': userId,
+                    'memberEmail': memberEmail
+                }
+                $.post(url, memberObj, function(result) {
+                    if (result) {
+                        if (result.success == "true") {
+                            window.location.href = "/members";
+                        } else {
+                            alert(result.msg);
+                        }
+                    } else {
+                        alert("Error in Editing");
+                    }
+                })
+            }
+
+            function showDashboard() {
+                document.getElementById('addEvent').style.display = 'none';
+                document.getElementById('container').style.display = 'block';
+
+            }
+
+            function showLoginBox() {
+                document.getElementById('addEvent').style.display = 'block';
+                document.getElementById('container').style.display = 'none';
+
+            }
+
+            function participate(userId, userName, tournamentId, tournamentName, membersLen, reqLen1, link) {
+
+                var len = parseInt(membersLen);
+                var reqLen = parseInt(reqLen1);
+                //var url = "http://localhost:8080/participate"
+                var url = "<%= process.env.request_url %>";
+                url = url + "/participate";
+                var data = {
+                    'userId': userId,
+                    'userName': userName,
+                    'tournamentId': tournamentId,
+                    'tournamentName': tournamentName
+                }
+                if (len < reqLen) {
+                    var nlen = reqLen - len;
+                    alert("Not enough members\n Please add " + nlen + " more members")
+                } else {
+                    $.post(url, data, function(result) {
+                        if (result) {
+                            if (result.success == "true") {
+                                window.open(link, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+                                window.location.href = "/members";
+                            } else {
+                                alert(result.msg);
+                            }
+                        } else {
+                            alert("Error in participating");
+                        }
+                    })
+                }
+
+
+            }
+
+            function addMember() {
+                //var url = "http://localhost:8080/add-member";
+                var url = "<%= process.env.request_url %>";
+                url = url + "/add-tournament";
+                var userId = document.getElementById("userId").textContent;
+                var tournamentObj = {
+                    'userId': userId,
+                    'obj': {
+                        'name': $("#name").val(),
+                        'tournamentId': $("#streamId").val(),
+                        'link': $("#location").val(),
+                        'memberLen': $("#mobileNumber").val()
+                    }
+
+
+                }
+                $.post(url, tournamentObj, function(result) {
+                    if (result) {
+                        if (result.success == "true") {
+                            window.location.href = "/adminDashboard";
+                        } else {
+                            alert(result.msg);
+                        }
+                    } else {
+                        alert("Error in saving");
+                    }
+                })
+
+            }
+        </script>
+
+
+        <!-- </body>
+            
+            </html> -->

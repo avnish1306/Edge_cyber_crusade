@@ -17,11 +17,16 @@ var tournamentSchema = mongoose.Schema({
     },
     status: {
         type: String,
-        default: "running"
+        default: "will start"
     },
     startDate: {
         type: Date,
         default: Date.now()
+    },
+    author: {
+        type: mongoose.Schema.Types.String,
+        refs: 'User'
+
     },
     teams: [{
         userId: {
