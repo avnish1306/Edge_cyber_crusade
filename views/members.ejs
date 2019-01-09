@@ -193,30 +193,7 @@
                         <strong>Location</strong>:
                         <%= user.location %>
 
-                            <div class="container">
-                                <div class="col-xs-12">
-                                    <div class="jumbotron text-center" style="background: rgba(0, 0, 0, .25) !important;padding: 2%;">
-                                        <h3>User Detail</h3>
-                                        <div class="row">
 
-                                            <div class="col">
-                                                <strong>Name</strong>:
-                                                <%= user.name %><br>
-                                                    <strong>Email</strong>:
-                                                    <%= user.google.email %><br>
-                                                        <strong>Team Name</strong>:
-                                                        <%= user.displayName %><br>
-                                                            <strong>Location</strong>:
-                                                            <%= user.location %>
-                                            </div>
-                                        </div>
-
-
-                                    </div>
-                                </div>
-
-
-                            </div>
 
                             <div class="text-center">
                                 <h1 style="color:rgb(57, 59, 61)"><span class="fa fa-user-circle"></span> Members</h1>
@@ -314,7 +291,7 @@
                         </p>
                         <% var flag=0;
                         for(j=0;j<user.tournaments.length;j++){
-                            if(user.tournaments[i].tournamentId==tournaments[i].tournamentId){
+                            if(user.tournaments[j].tournamentId==tournaments[i].tournamentId){
                                 flag=1;
                             }
                         }
@@ -358,7 +335,7 @@
                                 </div>
                                 <label id="userId" hidden><%= user.userId %></label>
                                 <div class="add-event main-center" align="center">
-                                    <form class="form-horizontal" method="post" action="#">
+                                    <form class="form-horizontal" name="RegForm" method="post" action="#">
 
                                         <div class="form-group ">
 
@@ -486,6 +463,63 @@
                     })
                 }
 
+                function validator() {
+                    var name = document.forms["RegForm"]["name"];
+                    var email = document.forms["RegForm"]["email"];
+                    var streamId = document.forms["RegForm"]["streamId"];
+                    var location = document.forms["RegForm"]["location"];
+                    var mobileNumber = document.forms["RegForm"]["mobileNumber"];
+
+                    if (name.value == "") {
+                        window.alert("Please enter your Name.");
+                        name.focus();
+                        return false;
+                    }
+
+                    if (email.value == "") {
+                        window.alert("Please enter your Email address.");
+                        name.focus();
+                        return false;
+                    }
+
+                    if (streamId.value == "") {
+                        window.alert("Please enter a valid Stream Id.");
+                        email.focus();
+                        return false;
+                    }
+
+                    if (email.value.indexOf("@", 0) < 0) {
+                        window.alert("Please enter a valid e-mail address.");
+                        email.focus();
+                        return false;
+                    }
+
+                    if (email.value.indexOf(".", 0) < 0) {
+                        window.alert("Please enter a valid e-mail address.");
+                        email.focus();
+                        return false;
+                    }
+
+                    if (mobileNumber.value == "") {
+                        window.alert("Please enter your Mobile Number.");
+                        phone.focus();
+                        return false;
+                    }
+
+                    if (location.value == "") {
+                        window.alert("Please enter your Location");
+                        password.focus();
+                        return flase;
+                    }
+                    if (parseInt(mobileNumber.value) < 1000000000 || parseInt(mobileNumber.value) > 9999999999) {
+                        window.alert("Please enter valid Mobile Number.");
+                        phone.focus();
+                        return false;
+                    }
+
+                    return true;
+                }
+
                 function showDashboard() {
                     document.getElementById('addEvent').style.display = 'none';
                     document.getElementById('container').style.display = 'block';
@@ -534,32 +568,34 @@
 
                 function addMember() {
                     //var url = "http://localhost:8080/add-member";
-                    var url = "<%= process.env.request_url %>";
-                    url = url + "/add-member";
-                    var userId = document.getElementById("userId").textContent;
-                    var memberObj = {
-                        'userId': userId,
-                        'obj': {
-                            'name': $("#name").val(),
-                            'streamId': $("#streamId").val(),
-                            'location': $("#location").val(),
-                            'email': $("#email").val(),
-                            'mobileNumber': $("#mobileNumber").val()
-                        }
-
-
-                    }
-                    $.post(url, memberObj, function(result) {
-                        if (result) {
-                            if (result.success == "true") {
-                                window.location.href = "/members";
-                            } else {
-                                alert(result.msg);
+                    if (validator() == true) {
+                        var url = "<%= process.env.request_url %>";
+                        url = url + "/add-member";
+                        var userId = document.getElementById("userId").textContent;
+                        var memberObj = {
+                            'userId': userId,
+                            'obj': {
+                                'name': $("#name").val(),
+                                'streamId': $("#streamId").val(),
+                                'location': $("#location").val(),
+                                'email': $("#email").val(),
+                                'mobileNumber': $("#mobileNumber").val()
                             }
-                        } else {
-                            alert("Error in saving");
+
+
                         }
-                    })
+                        $.post(url, memberObj, function(result) {
+                            if (result) {
+                                if (result.success == "true") {
+                                    window.location.href = "/members";
+                                } else {
+                                    alert(result.msg);
+                                }
+                            } else {
+                                alert("Error in saving");
+                            }
+                        })
+                    }
 
                 }
             </script>
