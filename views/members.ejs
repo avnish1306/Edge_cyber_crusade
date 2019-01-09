@@ -110,10 +110,10 @@
         padding-left: 60px;
     }
     
-    .input-group {
+    /* .input-group {
         max-width: 40%;
         min-width: 450px;
-    }
+    } */
     
     .add-button {
         width: 90px;
@@ -129,10 +129,10 @@
     #container {
         display: block;
         padding: 7%;
-        height: 100%;
+       
     }
     
-    .modal {
+    /* .modal {
         text-align: center;
         padding: 0!important;
     }
@@ -144,11 +144,27 @@
         vertical-align: middle;
         margin-right: -4px;
     }
-    
-    .modal-dialog {
+     */
+    /* .modal-dialog {
         display: inline-block;
         text-align: left;
         vertical-align: middle;
+    } */
+
+    @media (min-width : 300px)
+    {
+        #addm{
+            bottom: 650px;
+        }
+    }
+
+
+
+    @media (min-width : 600px)
+    {
+        #addm{
+            bottom: 0;
+        }
     }
     
     .tournaments {
@@ -168,10 +184,11 @@
 
 <% include partials/header2 %>
 
-    <div class="container" id="container">
+    <div class="container text-center" id="container">
         <div class="text-center">
             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg2">Tournaments</a>
         </div>
+<<<<<<< HEAD
         <div class="jumbotron text-center ">
             <h3 style="color:rgb(7, 52, 96)">User Detail</h3>
             <strong>Name</strong>:
@@ -182,7 +199,32 @@
                     <%= user.displayName %><br>
                         <strong>Location</strong>:
                         <%= user.location %>
+=======
+        <div class="container">
+            <div class="col-xs-12">
+                    <div class="jumbotron text-center" style="background: rgba(0, 0, 0, .25) !important;padding: 2%;">
+                            <h3>User Detail</h3>
+                        <div class="row">
+            
+                            <div class="col">
+                                    <strong>Name</strong>:
+                                    <%= user.name %><br>
+                                        <strong>Email</strong>:
+                                        <%= user.google.email %><br>
+                                            <strong>Team Name</strong>:
+                                            <%= user.displayName %><br>
+                                                <strong>Location</strong>:
+                                                <%= user.location %>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+            </div>
+                
+>>>>>>> cd730000897f4928d7494598565685e50338fc6e
         </div>
+        
         <div class="text-center">
             <h1 style="color:rgb(57, 59, 61)"><span class="fa fa-user-circle"></span> Members</h1>
         </div>
@@ -307,10 +349,10 @@
 
 
     <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
+        <div class="modal-dialog modal-lg" id="addm">
             <div class="modal-content">
 
-                <div class="container addEvent" id="addEvent" style="padding:5%">
+                <div class="container addEvent" id="addEvent" style="padding:5%;background: black">
                     <div class="row main">
 
                         <div class="col-sm-12">
@@ -394,7 +436,8 @@
 
                     </div>
 
-                </div>
+                </div> 
+            <!-- ==== -->
             </div>
         </div>
     </div>
