@@ -109,7 +109,6 @@
         background-color: white;
         padding-left: 60px;
     }
-    
     /* .input-group {
         max-width: 40%;
         min-width: 450px;
@@ -129,9 +128,7 @@
     #container {
         display: block;
         padding: 7%;
-       
     }
-    
     /* .modal {
         text-align: center;
         padding: 0!important;
@@ -150,19 +147,15 @@
         text-align: left;
         vertical-align: middle;
     } */
-
-    @media (min-width : 300px)
-    {
-        #addm{
+    
+    @media (min-width: 300px) {
+        #addm {
             bottom: 650px;
         }
     }
-
-
-
-    @media (min-width : 600px)
-    {
-        #addm{
+    
+    @media (min-width: 600px) {
+        #addm {
             bottom: 0;
         }
     }
@@ -188,7 +181,7 @@
         <div class="text-center">
             <a href="#" class="btn btn-info btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg2">Tournaments</a>
         </div>
-<<<<<<< HEAD
+
         <div class="jumbotron text-center ">
             <h3 style="color:rgb(7, 52, 96)">User Detail</h3>
             <strong>Name</strong>:
@@ -199,69 +192,67 @@
                     <%= user.displayName %><br>
                         <strong>Location</strong>:
                         <%= user.location %>
-=======
-        <div class="container">
-            <div class="col-xs-12">
-                    <div class="jumbotron text-center" style="background: rgba(0, 0, 0, .25) !important;padding: 2%;">
-                            <h3>User Detail</h3>
-                        <div class="row">
-            
-                            <div class="col">
-                                    <strong>Name</strong>:
-                                    <%= user.name %><br>
-                                        <strong>Email</strong>:
-                                        <%= user.google.email %><br>
-                                            <strong>Team Name</strong>:
-                                            <%= user.displayName %><br>
-                                                <strong>Location</strong>:
-                                                <%= user.location %>
+
+                            <div class="container">
+                                <div class="col-xs-12">
+                                    <div class="jumbotron text-center" style="background: rgba(0, 0, 0, .25) !important;padding: 2%;">
+                                        <h3>User Detail</h3>
+                                        <div class="row">
+
+                                            <div class="col">
+                                                <strong>Name</strong>:
+                                                <%= user.name %><br>
+                                                    <strong>Email</strong>:
+                                                    <%= user.google.email %><br>
+                                                        <strong>Team Name</strong>:
+                                                        <%= user.displayName %><br>
+                                                            <strong>Location</strong>:
+                                                            <%= user.location %>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+
+
                             </div>
-                        </div>
-                        
-                        
-                    </div>
-            </div>
-                
->>>>>>> cd730000897f4928d7494598565685e50338fc6e
-        </div>
-        
-        <div class="text-center">
-            <h1 style="color:rgb(57, 59, 61)"><span class="fa fa-user-circle"></span> Members</h1>
-        </div>
 
-
-        <a href="#" class="float" align="right" data-toggle="modal" data-target=".bd-example-modal-lg1">
-            <i class="fa fa-plus my-float"></i>
-        </a>
-        <div class="col-sm-12">
-            <div class="row">
-
-                <% for(var i=0;i<members.length;i++) {   %>
-
-                    <div class="col-sm-6 text-center" style="padding:5%">
-                        <div class="card" style="width: 18rem;">
-                            <h3 class="text-danger"><span class="fa fa-user-friends"></span></h3>
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= members[i].name %>
-                                </h5>
-                                <p class="card-text"><strong>Stream Id</strong>:
-                                    <%= members[i].streamId %><br>
-                                        <strong>Location</strong>:
-                                        <%= members[i].location %><br>
-                                            <strong>Email Id</strong>:
-                                            <%= members[i].email %><br>
-                                                <strong>Mobile Number</strong>:
-                                                <%= members[i].mobileNumber %>
-                                </p>
-
-                                <a href="javascript:;" class="btn btn-danger" id="<%= members[i].email %>" onclick="remove_member('<%= members[i].email %>')">Remove</a>
+                            <div class="text-center">
+                                <h1 style="color:rgb(57, 59, 61)"><span class="fa fa-user-circle"></span> Members</h1>
                             </div>
-                        </div>
-
-                    </div>
 
 
+                            <a href="#" class="float" align="right" data-toggle="modal" data-target=".bd-example-modal-lg1">
+                                <i class="fa fa-plus my-float"></i>
+                            </a>
+                            <div class="col-sm-12">
+                                <div class="row">
+
+                                    <% for(var i=0;i<members.length;i++) {   %>
+
+                                        <div class="col-sm-6 text-center" style="padding:5%">
+                                            <div class="card" style="width: 18rem;">
+                                                <h3 class="text-danger"><span class="fa fa-user-friends"></span></h3>
+                                                <div class="card-body">
+                                                    <h5 class="card-title">
+                                                        <%= members[i].name %>
+                                                    </h5>
+                                                    <p class="card-text"><strong>Stream Id</strong>:
+                                                        <%= members[i].streamId %><br>
+                                                            <strong>Location</strong>:
+                                                            <%= members[i].location %><br>
+                                                                <strong>Email Id</strong>:
+                                                                <%= members[i].email %><br>
+                                                                    <strong>Mobile Number</strong>:
+                                                                    <%= members[i].mobileNumber %>
+                                                    </p>
+
+                                                    <a href="javascript:;" class="btn btn-danger" id="<%= members[i].email %>" onclick="remove_member('<%= members[i].email %>')">Remove</a>
+                                                </div>
+                                            </div>
+
+                                        </div>
 
 
 
@@ -269,7 +260,9 @@
 
 
 
-                    <!-- <h3 class="text-danger"><span class="fa fa-laptop"></span>
+
+
+                                        <!-- <h3 class="text-danger"><span class="fa fa-laptop"></span>
                         <%= members[i].name %>
                     </h3>
                     <p>
@@ -288,38 +281,38 @@
                     <a href="" class="btn btn-secondary" id="<%= members[i].email %>">Edit</a>
                     <a href="javascript:;" class="btn btn-danger" id="<%= members[i].email %>" onclick="remove_member('<%= members[i].email %>')">Remove</a> -->
 
-                    <% } %>
+                                        <% } %>
 
-            </div>
+                                </div>
+                            </div>
         </div>
-    </div>
 
 
-    <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
-    <div class="modal fade bd-example-modal-lg2 " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg tournaments">
-            <div class="modal-content" style="padding: 10px">
+        <!-- <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg">Large modal</button> -->
+        <div class="modal fade bd-example-modal-lg2 " tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg tournaments">
+                <div class="modal-content" style="padding: 10px">
 
-                <% if(tournaments.length>0){ for(var i=0;i<tournaments.length;i++) {  %>
-                    <h3 class="text-danger"><span class="fa fa-laptop"></span>
-                        <%= tournaments[i].name %>
-                    </h3>
-                    <p>
+                    <% if(tournaments.length>0){ for(var i=0;i<tournaments.length;i++) {  %>
+                        <h3 class="text-danger"><span class="fa fa-laptop"></span>
+                            <%= tournaments[i].name %>
+                        </h3>
+                        <p>
 
-                        <strong>Tournament Id</strong>:
-                        <%= tournaments[i].tournamentId %><br>
-                            <strong>Status</strong>:
-                            <%= tournaments[i].status  %><br>
-                                <strong>Number of registered Teams</strong>:
-                                <%= tournaments[i].teams.length %>
-                                    <br>
-                                    <a id="formLink" onclick="window.open('<%= tournaments[i].link %>', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+                            <strong>Tournament Id</strong>:
+                            <%= tournaments[i].tournamentId %><br>
+                                <strong>Status</strong>:
+                                <%= tournaments[i].status  %><br>
+                                    <strong>Number of registered Teams</strong>:
+                                    <%= tournaments[i].teams.length %>
+                                        <br>
+                                        <a id="formLink" onclick="window.open('<%= tournaments[i].link %>', '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
                                             ">
-                                        <b> Fill this Google Form to complete Registration</b>
-                                    </a>
+                                            <b> Fill this Google Form to complete Registration</b>
+                                        </a>
 
-                    </p>
-                    <% var flag=0;
+                        </p>
+                        <% var flag=0;
                         for(j=0;j<user.tournaments.length;j++){
                             if(user.tournaments[i].tournamentId==tournaments[i].tournamentId){
                                 flag=1;
@@ -328,119 +321,119 @@
                         if(flag==0){
                             %>
 
-                        <a href="javascript:;" class="btn btn-success" width="90px" id="<%= tournaments[i].tournamentId %>" onclick="participate('<%= user.userId %>','<%= user.name %>','<%= tournaments[i].tournamentId %>','<%= tournaments[i].name %>','<%= members.length %>','<%= tournaments[i].memberLen %>','<%= tournaments[i].link %>')">Participate</a>
-                        <% }else{ %>
-                            <a href="javascript:;" class="btn btn-light" id="<%= tournaments[i].tournamentId %>">Already applied</a>
+                            <a href="javascript:;" class="btn btn-success" width="90px" id="<%= tournaments[i].tournamentId %>" onclick="participate('<%= user.userId %>','<%= user.name %>','<%= tournaments[i].tournamentId %>','<%= tournaments[i].name %>','<%= members.length %>','<%= tournaments[i].memberLen %>','<%= tournaments[i].link %>')">Participate</a>
+                            <% }else{ %>
+                                <a href="javascript:;" class="btn btn-light" id="<%= tournaments[i].tournamentId %>">Already applied</a>
 
 
-                            <%} } %>
+                                <%} } %>
 
 
-                                <% }else{ %>
-                                    <strong>Currently no running <br> tournaments available</strong>
+                                    <% }else{ %>
+                                        <strong>Currently no running <br> tournaments available</strong>
 
-                                    <%
+                                        <%
                 } %>
 
+                </div>
             </div>
         </div>
-    </div>
 
 
 
-    <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" id="addm">
-            <div class="modal-content">
+        <div class="modal fade bd-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" id="addm">
+                <div class="modal-content">
 
-                <div class="container addEvent" id="addEvent" style="padding:5%;background: black">
-                    <div class="row main">
+                    <div class="container addEvent" id="addEvent" style="padding:5%;background: black">
+                        <div class="row main">
 
-                        <div class="col-sm-12">
+                            <div class="col-sm-12">
 
-                            <div class="panel-heading">
-                                <div class="panel-title text-center">
-                                    <h1 class="title" style="color : rgb(41, 38, 38);">Add a new Member</h1>
-                                    <hr />
+                                <div class="panel-heading">
+                                    <div class="panel-title text-center">
+                                        <h1 class="title" style="color : rgb(41, 38, 38);">Add a new Member</h1>
+                                        <hr />
+                                    </div>
                                 </div>
+                                <label id="userId" hidden><%= user.userId %></label>
+                                <div class="add-event main-center" align="center">
+                                    <form class="form-horizontal" method="post" action="#">
+
+                                        <div class="form-group ">
+
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-send fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="streamId" id="streamId" placeholder="Enter Stream Id" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                                    <input type="text" class="form-control" name="location" id="location" placeholder="Location" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
+                                                    <input type="email" class="form-control" name="email" id="email" placeholder="Email Id" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+
+                                            <div class="cols-sm-10">
+                                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-rupee fa" aria-hidden="true"></i></span>
+                                                    <input type="number" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Contact Number" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group ">
+                                            <button type="button" class="btn btn-primary btn-lg btn-block add-button" onclick="addMember()">Add</button>
+                                        </div>
+                                        <div class="cancle">
+                                            <a href="/members" onclick="showDashboard()">Cancel</a>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+
+
+
+
                             </div>
-                            <label id="userId" hidden><%= user.userId %></label>
-                            <div class="add-event main-center" align="center">
-                                <form class="form-horizontal" method="post" action="#">
-
-                                    <div class="form-group ">
-
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-send fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="name" id="name" placeholder="Name" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="streamId" id="streamId" placeholder="Enter Stream Id" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
-                                                <input type="text" class="form-control" name="location" id="location" placeholder="Location" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-arrow-circle-o-right fa" aria-hidden="true"></i></span>
-                                                <input type="email" class="form-control" name="email" id="email" placeholder="Email Id" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <div class="cols-sm-10">
-                                            <div class="input-group">
-                                                <span class="input-group-addon"><i class="fa fa-rupee fa" aria-hidden="true"></i></span>
-                                                <input type="number" class="form-control" name="mobileNumber" id="mobileNumber" placeholder="Contact Number" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="form-group ">
-                                        <button type="button" class="btn btn-primary btn-lg btn-block add-button" onclick="addMember()">Add</button>
-                                    </div>
-                                    <div class="cancle">
-                                        <a href="/members" onclick="showDashboard()">Cancel</a>
-                                    </div>
-                                </form>
-                            </div>
-
-
-
 
 
 
                         </div>
 
-
-
                     </div>
-
-                </div> 
-            <!-- ==== -->
+                    <!-- ==== -->
+                </div>
             </div>
         </div>
-    </div>
 
 
 
@@ -461,117 +454,117 @@
 
 
 
-    <% include partials/footer %>
+        <% include partials/footer %>
 
-        <script>
-            function add() {
-                alert("hey");
-            }
-
-            function remove_member(memberEmail) {
-                //alert("clicked" + memberEmail);
-
-                //var url = "http://localhost:8080/remove-member";
-                var url = "<%= process.env.request_url %>";
-                url = url + "/remove-member";
-                var userId = document.getElementById("userId").textContent;
-
-                var memberObj = {
-                    'userId': userId,
-                    'memberEmail': memberEmail
+            <script>
+                function add() {
+                    alert("hey");
                 }
-                $.post(url, memberObj, function(result) {
-                    if (result) {
-                        if (result.success == "true") {
-                            window.location.href = "/members";
-                        } else {
-                            alert(result.msg);
-                        }
-                    } else {
-                        alert("Error in Editing");
+
+                function remove_member(memberEmail) {
+                    //alert("clicked" + memberEmail);
+
+                    //var url = "http://localhost:8080/remove-member";
+                    var url = "<%= process.env.request_url %>";
+                    url = url + "/remove-member";
+                    var userId = document.getElementById("userId").textContent;
+
+                    var memberObj = {
+                        'userId': userId,
+                        'memberEmail': memberEmail
                     }
-                })
-            }
-
-            function showDashboard() {
-                document.getElementById('addEvent').style.display = 'none';
-                document.getElementById('container').style.display = 'block';
-
-            }
-
-            function showLoginBox() {
-                document.getElementById('addEvent').style.display = 'block';
-                document.getElementById('container').style.display = 'none';
-
-            }
-
-            function participate(userId, userName, tournamentId, tournamentName, membersLen, reqLen1, link) {
-
-                var len = parseInt(membersLen);
-                var reqLen = parseInt(reqLen1);
-                //var url = "http://localhost:8080/participate"
-                var url = "<%= process.env.request_url %>";
-                url = url + "/participate";
-                var data = {
-                    'userId': userId,
-                    'userName': userName,
-                    'tournamentId': tournamentId,
-                    'tournamentName': tournamentName
-                }
-                if (len < reqLen) {
-                    var nlen = reqLen - len;
-                    alert("Not enough members\n Please add " + nlen + " more members")
-                } else {
-                    $.post(url, data, function(result) {
+                    $.post(url, memberObj, function(result) {
                         if (result) {
                             if (result.success == "true") {
-                                window.open(link, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
                                 window.location.href = "/members";
                             } else {
                                 alert(result.msg);
                             }
                         } else {
-                            alert("Error in participating");
+                            alert("Error in Editing");
                         }
                     })
                 }
 
+                function showDashboard() {
+                    document.getElementById('addEvent').style.display = 'none';
+                    document.getElementById('container').style.display = 'block';
 
-            }
+                }
 
-            function addMember() {
-                //var url = "http://localhost:8080/add-member";
-                var url = "<%= process.env.request_url %>";
-                url = url + "/add-member";
-                var userId = document.getElementById("userId").textContent;
-                var memberObj = {
-                    'userId': userId,
-                    'obj': {
-                        'name': $("#name").val(),
-                        'streamId': $("#streamId").val(),
-                        'location': $("#location").val(),
-                        'email': $("#email").val(),
-                        'mobileNumber': $("#mobileNumber").val()
+                function showLoginBox() {
+                    document.getElementById('addEvent').style.display = 'block';
+                    document.getElementById('container').style.display = 'none';
+
+                }
+
+                function participate(userId, userName, tournamentId, tournamentName, membersLen, reqLen1, link) {
+
+                    var len = parseInt(membersLen);
+                    var reqLen = parseInt(reqLen1);
+                    //var url = "http://localhost:8080/participate"
+                    var url = "<%= process.env.request_url %>";
+                    url = url + "/participate";
+                    var data = {
+                        'userId': userId,
+                        'userName': userName,
+                        'tournamentId': tournamentId,
+                        'tournamentName': tournamentName
+                    }
+                    if (len < reqLen) {
+                        var nlen = reqLen - len;
+                        alert("Not enough members\n Please add " + nlen + " more members")
+                    } else {
+                        $.post(url, data, function(result) {
+                            if (result) {
+                                if (result.success == "true") {
+                                    window.open(link, '_blank', 'location=yes,height=570,width=520,scrollbars=yes,status=yes');
+                                    window.location.href = "/members";
+                                } else {
+                                    alert(result.msg);
+                                }
+                            } else {
+                                alert("Error in participating");
+                            }
+                        })
                     }
 
 
                 }
-                $.post(url, memberObj, function(result) {
-                    if (result) {
-                        if (result.success == "true") {
-                            window.location.href = "/members";
-                        } else {
-                            alert(result.msg);
+
+                function addMember() {
+                    //var url = "http://localhost:8080/add-member";
+                    var url = "<%= process.env.request_url %>";
+                    url = url + "/add-member";
+                    var userId = document.getElementById("userId").textContent;
+                    var memberObj = {
+                        'userId': userId,
+                        'obj': {
+                            'name': $("#name").val(),
+                            'streamId': $("#streamId").val(),
+                            'location': $("#location").val(),
+                            'email': $("#email").val(),
+                            'mobileNumber': $("#mobileNumber").val()
                         }
-                    } else {
-                        alert("Error in saving");
+
+
                     }
-                })
+                    $.post(url, memberObj, function(result) {
+                        if (result) {
+                            if (result.success == "true") {
+                                window.location.href = "/members";
+                            } else {
+                                alert(result.msg);
+                            }
+                        } else {
+                            alert("Error in saving");
+                        }
+                    })
 
-            }
-        </script>
+                }
+            </script>
 
 
-        <!-- </body>
+            <!-- </body>
 
 </html> -->
