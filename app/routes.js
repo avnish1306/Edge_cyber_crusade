@@ -215,6 +215,7 @@ module.exports = function(app, passport) {
                         console.log(" error ");
                         pageNotFound(res);
                     } else {
+                        console.log(" tournament " + tournaments.length);
                         res.render('members.ejs', {
                             user: req.user,
                             members: user.members,
